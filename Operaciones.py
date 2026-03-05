@@ -3,12 +3,12 @@
 # ╚══════════════════════════════════════════════╝
 
 from config import C
-from ui import (
+from Ui import (
     limpiar_pantalla, pausar, linea, titulo_bloque,
     mensaje, mostrar_detalle,
     pedir_input, pedir_int, pedir_bool, confirmar, elegir_tipo,
 )
-from repositorio import (
+from Repositorio import (
     cargar_empanadas, guardar_empanadas,
     siguiente_id, buscar_por_id,
 )
@@ -171,11 +171,6 @@ def editar_empanada(catalogo: list[dict]) -> list[dict]:
 # ══════════════════════════════════════════════
 
 def eliminar_empanada(catalogo: list[dict]) -> list[dict]:
-    """
-    Solicita un ID, muestra el detalle de la empanada y
-    la elimina del catálogo tras una doble confirmación.
-    Retorna el catálogo actualizado.
-    """
     limpiar_pantalla()
     titulo_bloque("Eliminar Empanada", "🗑️")
 
@@ -205,3 +200,26 @@ def eliminar_empanada(catalogo: list[dict]) -> list[dict]:
 
     pausar()
     return catalogo
+
+# ══════════════════════════════════════════════
+# HELPER PRIVADO
+# ═══════════════════════════════════════════
+def _seleccionar_empanada(catalogo: list[dict], accion: str) -> dict | None:
+   
+    while True:
+        raw = input(
+            f"  {C.CYAN}▶  ID de la empanada a {accion} (0 para cancelar): {C.RESET}"
+        ).strip()
+        try:
+            id_sel = int(raw)
+            if id_sel == 0:
+                mensaje("Operación cancelada.", "warn")
+                pausar()
+                return None
+            emp = buscar_por_id(catalogo, id_sel)
+            if emp:
+                return emp
+            print(f"  {C.ROJO}ID no encontrado. Intenta de nuevo.{C.RESET}")
+        except ValueError:
+            print(f"  {C.ROJO}Ingresa un número válido.{C.RESET}")
+
