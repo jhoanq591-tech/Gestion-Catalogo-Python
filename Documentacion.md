@@ -113,14 +113,9 @@ git pull origin main
 | Prefijo | Uso |
 |---|---|
 | `feat:` | Nueva funcionalidad |
-| `fix:` | Corrección de errores |
 | `docs:` | Cambios en documentación |
-| `refactor:` | Reorganización de código |
 
-**Nomenclatura de ramas:**
-```
-feature/<nombre-del-modulo>
-```
----
 
-*Documentación elaborada por la colaboradora del proyecto.*
+
+
+*Documentación elaborada por la colaboradora del proyecto..*
