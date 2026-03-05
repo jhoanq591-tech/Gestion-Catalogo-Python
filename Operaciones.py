@@ -166,3 +166,42 @@ def editar_empanada(catalogo: list[dict]) -> list[dict]:
 
     pausar()
     return catalogo
+# ══════════════════════════════════════════════
+# 4. ELIMINAR EMPANADA
+# ══════════════════════════════════════════════
+
+def eliminar_empanada(catalogo: list[dict]) -> list[dict]:
+    """
+    Solicita un ID, muestra el detalle de la empanada y
+    la elimina del catálogo tras una doble confirmación.
+    Retorna el catálogo actualizado.
+    """
+    limpiar_pantalla()
+    titulo_bloque("Eliminar Empanada", "🗑️")
+
+    if not catalogo:
+        mensaje("El catálogo está vacío.", "warn")
+        pausar()
+        return catalogo
+
+    for emp in catalogo:
+        estado = f"{C.VERDE}✔{C.RESET}" if emp["disponible"] else f"{C.ROJO}✘{C.RESET}"
+        print(f"  {C.AMARILLO}#{emp['id']:02d}{C.RESET}  {emp['emoji']}  {emp['nombre']:<28} {estado}")
+    linea()
+
+    emp = _seleccionar_empanada(catalogo, "eliminar")
+    if emp is None:
+        return catalogo
+
+    print(f"\n  {C.BOLD}{C.ROJO}¿Eliminar permanentemente?{C.RESET}")
+    mostrar_detalle(emp)
+
+    if confirmar(f"Confirmar eliminación de '{emp['nombre']}'"):
+        catalogo = [e for e in catalogo if e["id"] != emp["id"]]
+        guardar_empanadas(catalogo)
+        mensaje(f"'{emp['nombre']}' eliminada del catálogo.", "ok")
+    else:
+        mensaje("Eliminación cancelada.", "warn")
+
+    pausar()
+    return catalogo
