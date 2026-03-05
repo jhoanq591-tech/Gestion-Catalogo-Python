@@ -118,4 +118,4 @@ git pull origin main
 
 
 
-*Documentación elaborada por la colaboradora del proyecto.*
+*Documentación elaborada por la colaboradora del proyecto..*
