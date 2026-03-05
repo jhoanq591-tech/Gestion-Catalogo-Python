@@ -222,4 +222,4 @@ def _seleccionar_empanada(catalogo: list[dict], accion: str) -> dict | None:
             print(f"  {C.ROJO}ID no encontrado. Intenta de nuevo.{C.RESET}")
         except ValueError:
             print(f"  {C.ROJO}Ingresa un número válido.{C.RESET}")
-
+            #holaaa
