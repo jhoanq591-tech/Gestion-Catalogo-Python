@@ -204,7 +204,3 @@ Se utiliza **Conventional Commits** para mantener un historial claro:
 
 ---
 
-## 📄 Licencia
-
-Proyecto de uso interno. Todos los derechos reservados © La Empanadera.
-
