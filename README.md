@@ -1,4 +1,4 @@
-# 🫓 Empanadas Doña Pepa — Gestión de Catálogo
+# 🫓 Empanadas — Gestión de Catálogo
 
 Sistema de gestión de catálogo de empanadas por consola, desarrollado en Python. Permite administrar el inventario de productos de un negocio de empanadas mediante un menú interactivo con interfaz visual colorida en terminal.
 
